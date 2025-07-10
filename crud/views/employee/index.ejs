@@ -1,0 +1,18 @@
+<h2>User List</h2>
+<a href="/employee/create">Add New User</a>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
+  </tr>
+  <% employee.forEach(emp => { %>
+    <tr>
+      <td><%= emp.id %></td>
+      <td><%= emp.name %></td>
+      <td><%= emp.email %></td>
+      <td>
+        <a href="/employee/edit/<%= user.id %>">Edit</a> |
+        <a href="/employee/delete/<%= user.id %>" onclick="return confirm('Delete?')">Delete</a>
+      </td>
+    </tr>
+  <% }) %>
+</table>
