@@ -1,7 +1,7 @@
 <h2>Edit User</h2>
-<form method="POST" action="/employee/edit/<%= user.id %>">
-  <p>Name: <input type="text" name="name" value="<%= user.name %>" required></p>
-  <p>Email: <input type="email" name="email" value="<%= user.email %>" required></p>
+<form method="POST" action="/employee/edit/<%= emp.id %>">
+  <p>Name: <input type="text" name="name" value="<%= emp.name %>" required></p>
+  <p>Email: <input type="email" name="email" value="<%= emp.email %>" required></p>
   <p><button type="submit">Update</button></p>
 </form>
 <a href="/employee">Back to List</a>

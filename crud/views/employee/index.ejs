@@ -1,18 +1,37 @@
-<h2>User List</h2>
-<a href="/employee/create">Add New User</a>
-<table border="1" cellpadding="5">
-  <tr>
-    <th>ID</th><th>Name</th><th>Email</th><th>Actions</th>
-  </tr>
-  <% employee.forEach(emp => { %>
-    <tr>
-      <td><%= emp.id %></td>
-      <td><%= emp.name %></td>
-      <td><%= emp.email %></td>
-      <td>
-        <a href="/employee/edit/<%= emp.id %>">Edit</a> |
-        <a href="/employee/delete/<%= emp.id %>" onclick="return confirm('You are sure you want to delete')">Delete</a>
-      </td>
-    </tr>
-  <% }) %>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee List</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Employee List</h2>
+    <a href="/employee/create">Add New User</a> <br>
+    <%- include('search', { search: search }) %>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      <% employee.forEach(emp => { %>
+        <tr>
+          <td><%= emp.id %></td>
+          <td><%= emp.name %></td>
+          <td><%= emp.email %></td>
+          <td>
+            <a href="/employee/edit/<%= emp.id %>">Edit</a> |
+            <a href="/employee/delete/<%= emp.id %>" onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  </div>
+
+</body>
+</html>

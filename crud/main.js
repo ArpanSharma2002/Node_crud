@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const db = require('./db');
 const path = require('path');
 const app = express();
-
+app.use(express.static('crud'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../crud/views'));
@@ -11,11 +11,21 @@ app.set('views', path.join(__dirname, '../crud/views'));
 
 //  Show All employee
 app.get('/employee', (req, res) => {
-    db.query('SELECT * FROM employee', (err, results) => {
-      if (err) throw err;
-      res.render('employee/index', { employee: results });
-    });
+  const searchQuery = req.query.search || '';
+
+  let sql = 'SELECT * FROM employee';
+  let params = [];
+
+  if (searchQuery) {
+    sql += ' WHERE name LIKE ?';
+    params.push(`%${searchQuery}%`);
+  }
+
+  db.query(sql, params, (err, results) => {
+    if (err) throw err;
+    res.render('employee/index', { employee: results, search: searchQuery });
   });
+});
   
   //  Show Create Form
   app.get('/employee/create', (req, res) => {
@@ -35,7 +45,7 @@ app.get('/employee', (req, res) => {
   app.get('/employee/edit/:id', (req, res) => {
     db.query('SELECT * FROM employee WHERE id = ?', [req.params.id], (err, result) => {
       if (err) throw err;
-      res.render('employee/edit', { user: result[0] });
+      res.render('employee/edit', { emp: result[0] });
     });
   });
   
