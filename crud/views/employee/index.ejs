@@ -10,8 +10,8 @@
       <td><%= emp.name %></td>
       <td><%= emp.email %></td>
       <td>
-        <a href="/employee/edit/<%= user.id %>">Edit</a> |
-        <a href="/employee/delete/<%= user.id %>" onclick="return confirm('Delete?')">Delete</a>
+        <a href="/employee/edit/<%= emp.id %>">Edit</a> |
+        <a href="/employee/delete/<%= emp.id %>" onclick="return confirm('You are sure you want to delete')">Delete</a>
       </td>
     </tr>
   <% }) %>
