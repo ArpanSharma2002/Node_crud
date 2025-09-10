@@ -1,7 +1,11 @@
 <h2>Add New User</h2>
+<link rel="stylesheet" href="/css/style.css">
 <form method="POST" action="/employee/create">
   <p>Name: <input type="text" name="name" required></p>
   <p>Email: <input type="email" name="email" required></p>
   <p><button type="submit">Save</button></p>
 </form>
-<a href="/employee">Back to List</a>
+<div class="back-btn-container">
+  <a href="/employee" class="back-btn">Back to List</a>
+</div>
+

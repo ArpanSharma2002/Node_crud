@@ -1,7 +1,11 @@
 <h2>Edit User</h2>
+<link rel="stylesheet" href="/css/style.css">
 <form method="POST" action="/employee/edit/<%= emp.id %>">
   <p>Name: <input type="text" name="name" value="<%= emp.name %>" required></p>
   <p>Email: <input type="email" name="email" value="<%= emp.email %>" required></p>
   <p><button type="submit">Update</button></p>
 </form>
-<a href="/employee">Back to List</a>
+
+<div class="back-btn-container">
+  <a href="/employee" class="back-btn">Back to List</a>
+</div>

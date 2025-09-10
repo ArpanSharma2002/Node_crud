@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const db = require('./db');
 const path = require('path');
 const app = express();
-app.use(express.static('crud'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../crud/views'));
@@ -11,6 +11,7 @@ app.set('views', path.join(__dirname, '../crud/views'));
 
 //  Show All employee
 app.get('/employee', (req, res) => {
+
   const searchQuery = req.query.search || '';
 
   let sql = 'SELECT * FROM employee';
@@ -65,7 +66,7 @@ app.get('/employee', (req, res) => {
       res.redirect('/employee');
     });
   });
-  
+
   app.listen(3000, () => {
     console.log('Server running on port 3000');
   });
